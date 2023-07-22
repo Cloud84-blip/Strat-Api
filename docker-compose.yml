@@ -1,0 +1,8 @@
+version: "3"
+services:
+  strat-api:
+    image: strat-api
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
