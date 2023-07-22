@@ -5,54 +5,16 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-run:
+  build-run-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build -t strat-api .
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Build and export
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          tags: myimage:latest
-          outputs: type=docker,dest=/tmp/strat-api.tar
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: strat-api
-          path: /tmp/strat-api.tar
-
-
-  test:
-    needs: build-and-run
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: strat-api
-          path: /tmp
-      - name: Load image
-        run: |
-          docker load --input /tmp/strat-api.tar
-          docker image ls -a
-      - name: Start the Docker image
-        run: docker-compose up -d
       - name: Wait for the API to start
         run: sleep 5
       - name: Run the tests
         run: docker-compose exec strat-api yarn test
-
-  stop:  
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Stop the Docker image
+      - name: Stop the API
         run: docker-compose down
+      
