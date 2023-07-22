@@ -5,17 +5,19 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  build-and-run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build -t strat-api .
+      - name: show files
+        run: ls -la
       - name: Run the Docker image
-        run: docker-compose -f docker/docker-compose.yml up -d
+        run: docker-compose up -d
       
   test:
-    needs: build-and-test
+    needs: build-and-run
     runs-on: ubuntu-latest
     steps:
       - name: Wait for the API to start
