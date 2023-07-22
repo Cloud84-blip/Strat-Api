@@ -18,14 +18,12 @@ jobs:
       - name: Run the tests
         run: docker-compose exec -t strat-api yarn test
       - name: Login to Docker Hub
-        uses: docker/login-action@v4
+        uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: cloudblip06
           password: ${{ secrets.DOCKERHUB_PASS }}
-      - name: Build and push Docker image
-        run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/strat-api:strat-api-server -f DockerFile .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/strat-api:strat-api-server  
+      - name: Push Docker image
+        run: docker push cloudblip06/strat-api  
       - name: Stop the API
         run: docker-compose down
       
