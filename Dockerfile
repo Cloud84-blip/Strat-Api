@@ -7,3 +7,4 @@ RUN apk update && apk add curl
 RUN yarn
 CMD ["yarn", "start:dev"]
 EXPOSE 3000
+
