@@ -19,7 +19,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: backup
-          permissions: 755
+          permissions: '755'
           path: ./
 
       
@@ -33,7 +33,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: backup
-          permissions: 755
+          permissions: '755'
           path: ./
       - name: Wait for the API to start
         run: sleep 5
