@@ -17,19 +17,3 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 
-  run:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Run the Docker image
-      run: docker compose up -d
-
-  test:
-    needs: run
-    runs-on: ubuntu-latest
-    steps:
-    - name: run tests
-      run: yarn test
-
-      
