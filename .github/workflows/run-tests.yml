@@ -16,10 +16,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: ls -la
-        run: ls -la
       - name: Run the Docker image
-        run: docker-compose up -d
+        run: docker-compose -f docker/docker-compose.yml up -d
 
   test:
     needs: run
