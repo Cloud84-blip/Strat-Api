@@ -37,6 +37,8 @@ jobs:
           path: ./
       - name: Show files
         run: ls -la
+      - name: Start the Docker image
+        run: docker-compose up -d
       - name: Wait for the API to start
         run: sleep 5
       - name: Run the tests
