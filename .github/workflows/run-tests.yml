@@ -24,6 +24,7 @@ jobs:
 
 
     test:
+      needs: run
       - name: Wait for the API to start
         run: sleep 5
       - name: Run the tests
