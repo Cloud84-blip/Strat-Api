@@ -35,6 +35,8 @@ jobs:
         with:
           name: backup
           path: ./
+      - name: Show files
+        run: ls -la
       - name: Wait for the API to start
         run: sleep 5
       - name: Run the tests
