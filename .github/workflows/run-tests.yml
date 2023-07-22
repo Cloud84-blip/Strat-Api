@@ -36,7 +36,7 @@ jobs:
           name: backup
           path: ./
       - name: Show files
-        run: ls -la
+        run: ls -la&&docker images
       - name: Start the Docker image
         run: docker-compose up -d
       - name: Wait for the API to start
