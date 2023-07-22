@@ -32,8 +32,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: backup
-          run: chmod -R 755 ./
           path: ./
+      - name: Change permissions
+        run: chmod -R 755 ./
       - name: Wait for the API to start
         run: sleep 5
       - name: Run the tests
