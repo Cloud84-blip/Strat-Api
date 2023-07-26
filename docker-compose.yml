@@ -1,8 +1,40 @@
 version: "3"
+
+networks:
+  monreseau:
+    external: false
+
+
+
 services:
+  db:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: strat
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: nestjs
+    volumes:
+      - pgbd:/var/lib/postgresql/data
+    networks:
+      - monreseau
+
+
   strat-api:
-    image: strat-api
-    env_file:
-      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: strat-api
+    volumes:
+      - pokemons:/app/pokemons
+      - equipes:/app/equipes
+      - .:/app
+    networks:
+      - monreseau
     ports:
       - "3000:3000"
+
+volumes:
+  pgbd:
+  pokemons:
+  equipes:
