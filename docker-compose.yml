@@ -21,6 +21,7 @@ services:
 
 
   strat-api:
+    image: strat-api
     build:
       context: .
       dockerfile: Dockerfile
