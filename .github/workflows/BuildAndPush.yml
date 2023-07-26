@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASS }}
       - name: Push Docker image
         run: |
-         ls -l
+         docker images
          docker tag strat-api cloudblip06/strat-api
          docker push cloudblip06/strat-api  
       - name: Stop the API
