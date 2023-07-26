@@ -2,12 +2,12 @@ name: Run all tests
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "api-dev" ]
 
 
 jobs:
   run-tests:
-    runs-on: ubuntu-latest
+    runs-on: node:18-alpine
     steps:
       - uses: actions/checkout@v3
       - name: Execute tests
