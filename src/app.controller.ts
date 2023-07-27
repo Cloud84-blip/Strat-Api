@@ -31,5 +31,9 @@ export class AppController {
     return this.appService.getPokemonById(id);
   }
 
+  @Post('/pokemons')
+  postPokemon(pokemon:{}): {} {
+    return this.appService.postPokemon(pokemon);
+  }
   
 }

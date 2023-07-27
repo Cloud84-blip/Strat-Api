@@ -49,5 +49,12 @@ describe('AppController', () => {
     });
   })
 
+  describe('pokemon', () => {
+    it('should return the posted pokemon', () => {
+      const pokemon = { id: 1, name: 'bulbasaur' };
+      expect(appController.postPokemon(pokemon)).toStrictEqual(pokemon);
+    });
+  })
+
 
 });

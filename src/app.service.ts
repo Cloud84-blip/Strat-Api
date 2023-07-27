@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { insertPokemon, getPokemonsById } from './database.functions';
+import { Pokemons_InsertParameters } from './__generated__/pokemons';
 
 @Injectable()
 export class AppService {
@@ -22,6 +24,12 @@ export class AppService {
 
 
   getPokemonById(id: number): {} {
-    return { id: id, name: 'bulbasaur' };
+    const pokemon = getPokemonsById(id);
+    return pokemon;
+  }
+
+  postPokemon(pokemon:{}): {} {
+    insertPokemon(pokemon as Pokemons_InsertParameters);
+    return pokemon;
   }
 }
