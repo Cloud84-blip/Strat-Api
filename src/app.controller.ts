@@ -27,12 +27,12 @@ export class AppController {
 
   // get a pokemon by id
   @Get('/pokemons/:id')
-  getPokemonById(id: number): {} {
+  getPokemonById(id: number): Promise<{}> {
     return this.appService.getPokemonById(id);
   }
 
-  @Post('/pokemons')
-  postPokemon(pokemon:{}): {} {
+  @Post('/pokemons/:pokemon')
+  postPokemon(pokemon:{}): Promise<void> {
     return this.appService.postPokemon(pokemon);
   }
   

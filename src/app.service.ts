@@ -23,13 +23,11 @@ export class AppService {
   }
 
 
-  getPokemonById(id: number): {} {
-    const pokemon = getPokemonsById(id);
-    return pokemon;
+  getPokemonById(id: number): Promise<{}> {
+    return getPokemonsById(id);
   }
 
-  postPokemon(pokemon:{}): {} {
-    insertPokemon(pokemon as Pokemons_InsertParameters);
-    return pokemon;
+  postPokemon(pokemon:{}): Promise<void> {
+   return insertPokemon(pokemon as Pokemons_InsertParameters);
   }
 }

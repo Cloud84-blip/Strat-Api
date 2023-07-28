@@ -4,16 +4,15 @@ networks:
   monreseau:
     external: false
 
-
-
 services:
   db:
     image: postgres:latest
     container_name: postgres
     environment:
+      DATABASE_URL: postgres://strat:admin@localhost:5432/postgres
       POSTGRES_USER: strat
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: nestjs
+      POSTGRES_DB: strat-api
     volumes:
       - pgbd:/var/lib/postgresql/data
     networks:
