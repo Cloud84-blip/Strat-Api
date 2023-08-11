@@ -2,12 +2,14 @@ import {sql} from '@databases/pg';
 import createPool from '@databases/pg';
 import tables from '@databases/pg-typed';
 import DatabaseSchema from './__generated__';
+require('dotenv').config();
 
 export {sql};
 
+
 const db = createPool({
   bigIntMode: 'number',
-  connectionString:"postgres://strat:admin@localhost:5432/postgres"
+  connectionString: process.env.DATABASE_URL,
 });
 
 export default db;

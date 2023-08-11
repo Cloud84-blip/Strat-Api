@@ -1,0 +1,49 @@
+[
+  {
+    "name": "pokemons",
+    "columns": [
+      {
+        "name": "_type",
+        "isNullable": true,
+        "hasDefault": false,
+        "typeId": 1043,
+        "typeName": "VARCHAR"
+      },
+      {
+        "name": "default_sprite",
+        "isNullable": true,
+        "hasDefault": false,
+        "typeId": 1043,
+        "typeName": "VARCHAR"
+      },
+      {
+        "name": "id",
+        "isNullable": false,
+        "hasDefault": true,
+        "typeId": 23,
+        "typeName": "INTEGER"
+      },
+      {
+        "name": "moves",
+        "isNullable": true,
+        "hasDefault": false,
+        "typeId": 1015,
+        "typeName": "VARCHAR[]"
+      },
+      {
+        "name": "name_en",
+        "isNullable": true,
+        "hasDefault": false,
+        "typeId": 1043,
+        "typeName": "VARCHAR"
+      },
+      {
+        "name": "name_fr",
+        "isNullable": true,
+        "hasDefault": false,
+        "typeId": 1043,
+        "typeName": "VARCHAR"
+      }
+    ]
+  }
+]

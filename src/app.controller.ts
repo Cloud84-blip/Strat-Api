@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -27,13 +27,19 @@ export class AppController {
 
   // get a pokemon by id
   @Get('/pokemons/:id')
-  getPokemonById(id: number): Promise<{}> {
+  getPokemonById(@Param('id') id: number): Promise<{}> {
     return this.appService.getPokemonById(id);
   }
 
-  @Post('/pokemons/:pokemon')
-  postPokemon(pokemon:{}): Promise<void> {
+  @Post('/pokemons')
+  postPokemon(@Body() pokemon:{}): Promise<void> {
     return this.appService.postPokemon(pokemon);
   }
   
+
+  @Delete('/pokemons/:id')
+  deletePokemon(@Param('id') id: number): Promise<void> {
+    return this.appService.deletePokemon(id);
+  }
+
 }

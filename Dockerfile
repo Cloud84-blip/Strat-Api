@@ -1,10 +1,10 @@
 FROM node:18-alpine
 ENV NODE_ENV development
 WORKDIR /app
-COPY package.json yarn.lock docker-compose.yml ./
-COPY . /app
 RUN apk update && apk add curl
+COPY . /app
+COPY package.json nest-cli.json yarn.lock docker-compose.yml ./
 RUN yarn
-CMD ["yarn", "start:dev"]
+CMD ["yarn", "start"]
 EXPOSE 3000
 

@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
+const database_functions_1 = require("./database.functions");
 let AppService = exports.AppService = class AppService {
     getHello() {
         return 'Welcome to the strat world!';
@@ -24,7 +25,10 @@ let AppService = exports.AppService = class AppService {
         return equipes;
     }
     getPokemonById(id) {
-        return { id: id, name: 'bulbasaur' };
+        return (0, database_functions_1.getPokemonsById)(id);
+    }
+    postPokemon(pokemon) {
+        return (0, database_functions_1.insertPokemon)(pokemon);
     }
 };
 exports.AppService = AppService = __decorate([

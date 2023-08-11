@@ -3,5 +3,6 @@ export declare class AppService {
     getApiName(): string;
     getEquipes(): string[];
     postEquipes(equipe: {}): string[];
-    getPokemonById(id: number): {};
+    getPokemonById(id: number): Promise<{}>;
+    postPokemon(pokemon: {}): Promise<void>;
 }

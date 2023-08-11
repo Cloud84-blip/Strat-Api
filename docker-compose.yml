@@ -15,6 +15,8 @@ services:
       POSTGRES_DB: strat-api
     volumes:
       - pgbd:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
     networks:
       - monreseau
 
@@ -28,11 +30,19 @@ services:
     volumes:
       - pokemons:/app/pokemons
       - equipes:/app/equipes
-      - .:/app
+      - ./src:/app/src
     networks:
       - monreseau
+    environment:
+      DATABASE_URL: postgres://strat:admin@postgres:5432/postgres
+      POSTGRES_USER: strat
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: strat-api
     ports:
       - "3000:3000"
+    links:
+      - db
+    restart: always
 
 volumes:
   pgbd:
