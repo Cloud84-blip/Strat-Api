@@ -2,8 +2,8 @@ name: Deploy from production
 
 on:
   workflow_run:
-    workflows: ["Docker Push"]
-    branches: ["main"]
+    workflows: 
+      - Docker Push
     types:
       - completed
 
