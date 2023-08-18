@@ -3,7 +3,7 @@ name: Deploy from production
 on:
   workflow_run:
     workflows: 
-      - Docker Push
+      - Docker_Push
     types:
       - completed
 
