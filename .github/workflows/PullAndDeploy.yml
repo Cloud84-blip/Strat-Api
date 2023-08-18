@@ -2,8 +2,7 @@ name: Deploy from production
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
 
 jobs:
   pull_and_deploy:
