@@ -1,0 +1,19 @@
+name: Deploy from production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pull_and_deploy:
+    runs-on: ubuntu-latest
+
+    needs: [Docker Push]  # depends on Docker push Workflow
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Running prod services
+      - run: docker compose -f docker-compose.prod.yml up
+      - name: Stoping services
+      - run: docker compose down
