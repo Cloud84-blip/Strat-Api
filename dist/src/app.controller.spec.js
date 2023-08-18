@@ -65,5 +65,19 @@ describe('AppController', () => {
             });
         });
     });
+    describe('pokemon', () => {
+        it('should delete the pokemon with id 1 after post', async () => {
+            const id = 1;
+            const pokemon = { id: 1, name_en: 'bulbasaur', name_fr: null, _type: null, default_sprite: null, moves: null };
+            return appController.postPokemon(pokemon).then(async () => {
+                await (0, database_functions_1.deletePokemon)({ id });
+                await appController.getPokemonById(id).then((pokemon) => {
+                    expect.assertions(1);
+                    console.log(pokemon);
+                    expect(pokemon).toBeNull();
+                });
+            });
+        });
+    });
 });
 //# sourceMappingURL=app.controller.spec.js.map

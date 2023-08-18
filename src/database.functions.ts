@@ -26,8 +26,30 @@ async function getPokemonsById(id: number): Promise<{}> {
     return await pokemons(db).findOne({id});
 }
 
+// async function deletePokemon(pokemon: Pokemons_InsertParameters) {
+//   await pokemons(db).delete(pokemon);
+// }
+
 async function deletePokemon(pokemon: Pokemons_InsertParameters) {
-  await pokemons(db).delete(pokemon);
+  try {
+    await pokemons(db).delete(pokemon)
+    .then(() => {return "Pokemon deleted successfully"});
+    console.log('Pokemon deleted successfully');
+  } catch (error) {
+    console.error('Error deleting pokemon:', error.message);
+    throw error; // Re-lance l'erreur pour que l'appelant puisse la gérer
+  }
 }
 
-export {insertPokemon, getPokemonsById, deletePokemon, createTable, dropTableIfExists};
+async function updatePokemon(id: number, pokemon: Pokemons_InsertParameters){
+  try {
+    await pokemons(db).update({id : id}, pokemon); // Mettre à jour avec les nouvelles données
+    console.log('Pokemon updated successfully');
+  } catch (error) {
+    console.error('Error updating pokemon:', error.message);
+    throw error;
+  }
+}
+
+
+export {insertPokemon, getPokemonsById, deletePokemon, createTable, dropTableIfExists, updatePokemon};

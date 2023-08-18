@@ -30,6 +30,12 @@ let AppService = exports.AppService = class AppService {
     postPokemon(pokemon) {
         return (0, database_functions_1.insertPokemon)(pokemon);
     }
+    deletePokemon(id) {
+        return (0, database_functions_1.deletePokemon)({ id });
+    }
+    putPokemon(id, pokemon) {
+        return (0, database_functions_1.updatePokemon)(id, pokemon);
+    }
 };
 exports.AppService = AppService = __decorate([
     (0, common_1.Injectable)()

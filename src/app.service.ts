@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { insertPokemon, getPokemonsById, deletePokemon } from './database.functions';
+import { insertPokemon, getPokemonsById, deletePokemon, updatePokemon } from './database.functions';
 import { Pokemons_InsertParameters } from './__generated__/pokemons';
 
 @Injectable()
@@ -33,5 +33,9 @@ export class AppService {
 
   deletePokemon(id: number): Promise<void> {
     return deletePokemon({id});
+  }
+
+  putPokemon(id : number, pokemon: {}){
+    return updatePokemon(id, pokemon as Pokemons_InsertParameters);
   }
 }

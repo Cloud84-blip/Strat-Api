@@ -37,6 +37,12 @@ let AppController = exports.AppController = class AppController {
     postPokemon(pokemon) {
         return this.appService.postPokemon(pokemon);
     }
+    deletePokemon(id) {
+        return this.appService.deletePokemon(id);
+    }
+    putPokemon(id, pokemon) {
+        return this.appService.putPokemon(id, pokemon);
+    }
 };
 __decorate([
     (0, common_1.Get)(),
@@ -76,6 +82,21 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "postPokemon", null);
+__decorate([
+    (0, common_1.Delete)('/pokemons/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "deletePokemon", null);
+__decorate([
+    (0, common_1.Put)('/pokemons/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "putPokemon", null);
 exports.AppController = AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])

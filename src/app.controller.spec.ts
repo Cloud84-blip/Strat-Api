@@ -90,6 +90,7 @@ describe('AppController', () => {
         await deletePokemon({id});
         await appController.getPokemonById(id).then((pokemon) => {
           expect.assertions(1);
+          console.log(pokemon);
           expect(pokemon).toBeNull();
         })
       });
