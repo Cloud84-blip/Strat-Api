@@ -13,6 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Running prod services
-      - run: docker compose -f docker-compose.prod.yml up
+        run: docker compose -f docker-compose.prod.yml up -d
       - name: Stoping services
-      - run: docker compose down
+        run: docker compose -f docker-compose.prod.yml down
