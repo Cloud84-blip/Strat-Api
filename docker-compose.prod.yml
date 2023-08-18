@@ -1,0 +1,48 @@
+version: "3"
+
+networks:
+  monreseau:
+    external: false
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      DATABASE_URL: postgres://strat:admin@localhost:5432/postgres
+      POSTGRES_USER: strat
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: strat-api
+    volumes:
+      - pgbd:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - monreseau
+
+
+  strat-api:
+    image: cloudblip06/strat-api
+    container_name: strat-api
+    volumes:
+      - pokemons:/app/pokemons
+      - equipes:/app/equipes
+      - ./src:/app/src
+    networks:
+      - monreseau
+    environment:
+      DATABASE_URL: postgres://strat:admin@postgres:5432/postgres
+      POSTGRES_USER: strat
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: strat-api
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    restart: always
+    command: yarn build&&yarn start
+
+volumes:
+  pgbd:
+  pokemons:
+  equipes:
