@@ -7,6 +7,7 @@ on:
 jobs:
   prepare:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -14,10 +15,10 @@ jobs:
   pull_and_deploy:
     runs-on: ubuntu-latest
 
-    needs: [prepare, build-and-push]  # depends on Docker push Workflow
+    needs: [prepare, build-and-push]  # Utilisez "build-and-push" comme dépendance
 
     steps:
       - name: Running prod services
-        run: docker compose -f docker-compose.prod.yml up -d
+        run: docker-compose -f docker-compose.prod.yml up -d
       - name: Stoping services
-        run: docker compose -f docker-compose.prod.yml down
+        run: docker-compose -f docker-compose.prod.yml down
