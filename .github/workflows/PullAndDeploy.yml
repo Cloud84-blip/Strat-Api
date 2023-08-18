@@ -1,8 +1,11 @@
 name: Deploy from production
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Docker Push"]
     branches: ["main"]
+    types:
+      - completed
 
 jobs:
   prepare:
@@ -16,9 +19,6 @@ jobs:
     runs-on: ubuntu-latest
 
     needs: [prepare, Docker Push]
-
-    workflows: ["Docker Push"]
-
     steps:
       - name: Running prod services
         run: docker-compose -f docker-compose.prod.yml up -d

@@ -1,6 +1,6 @@
 name: Docker Push
 
-on: [workflow_call]
+on:
   push:
     branches: [ "main" ]
 
