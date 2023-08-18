@@ -18,7 +18,7 @@ jobs:
   pull_and_deploy:
     runs-on: ubuntu-latest
 
-    needs: [prepare]
+    needs: prepare
     steps:
       - name: Running prod services
         run: docker-compose -f docker-compose.prod.yml up -d
